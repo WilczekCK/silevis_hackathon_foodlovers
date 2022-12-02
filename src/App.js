@@ -23,7 +23,9 @@ class App extends React.Component{
     return (
       <div className="App">
           <div className="App__map"></div>
-          <div className="App__menu"></div>
+          <div className="App__menu">
+
+          </div>
       </div>
     )
   }
