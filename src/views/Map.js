@@ -26,8 +26,10 @@ class Map extends React.Component{
     }
 
 
-    changeMenuLocation(){
-        return this.props.onMenuChange('events');
+    changeMenuLocation(e){
+        const menuLocation = e.target.attributes['data-event'].value;
+
+        return this.props.onMenuChange(`events/${menuLocation}`);
     }
 
     render(){
@@ -43,7 +45,7 @@ class Map extends React.Component{
                     <Marker key={index} position={event.pos}>
                         <Popup>
                             <h3>{event.name}</h3>
-                            <a onClick={ this.changeMenuLocation }href="#"> PRZEJDŹ DO WYDARZENIA </a>
+                            <a onClick={ this.changeMenuLocation } data-event={event.id} href="#"> PRZEJDŹ DO WYDARZENIA </a>
                         </Popup>
                     </Marker>
                 )}

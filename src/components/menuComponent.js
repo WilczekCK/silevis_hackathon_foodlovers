@@ -36,31 +36,44 @@ class MenuComponent extends React.Component{
     }
 
     displayProperMenuContent(){
-        switch (this.props.menuLocation) {
-            case 'home':
+        const menuLocation = this.props.menuLocation;
+
+        switch (true) {
+            case menuLocation.includes('home'):
                 return (
                 <div className="homepage__container">
                     <h2>Homepage</h2>
                 </div>
                 )
-            case 'locations':
+            case menuLocation.includes('locations'):
                 return (
                 <div className="locations__container">
                     <h2>Locations</h2>
                 </div>
                 )
-            case 'teams':
+            case menuLocation.includes('teams'):
                 return (
                 <div className="teams__container">
                     <h2>Teams</h2>
                 </div>
                 )
-            case 'events':
-                return (
-                <div className="events__container">
-                    <h2>Events</h2>
-                </div>
-                )
+            case menuLocation.includes('events'):
+                const menuLocationId = menuLocation.replace(/\D/g, "");
+
+                if( menuLocationId ) {
+                    return (
+                        <div className="events__container">
+                            <h2>Event number {menuLocationId}</h2>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div className="events__container">
+                            <h2>Events</h2>
+                        </div>
+                    )
+                }
+
             default:
                 break;
         }
