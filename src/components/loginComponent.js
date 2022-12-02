@@ -1,4 +1,5 @@
 import React from "react";
+import CookieInstation from "../controllers/cookieController";
 
 class LoginComponent extends React.Component{
     constructor(){
@@ -26,7 +27,7 @@ class LoginComponent extends React.Component{
 
         // Cookie creation
         if (isCorrect) {
-        
+            CookieInstation.setCookie();
         }
     }
 
