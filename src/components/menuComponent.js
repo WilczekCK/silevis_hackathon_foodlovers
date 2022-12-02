@@ -1,16 +1,39 @@
 import React from "react";
 import CookieInstation from "../controllers/cookieController";
+import LoginComponent from './loginComponent';
 
 class MenuComponent extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
-        console.log(CookieInstation.getCookieInfo());
+        this.logout = this.logout.bind(this);
     }    
 
+    onlogin(){
+
+    }
+
+    logout(){
+        CookieInstation.removeCookie();
+        this.props.onCookieChange({});
+    }
+
+    //
     render(){
         return (
             <div className="navbar__container">
+
+                { this.props.cookieInfo && this.props.cookieInfo.username ? (
+                    <div>
+                        Hello, {this.props.cookieInfo.username}
+                        <br />
+                        <button onClick={this.logout}>Logout</button>
+                    </div>)
+                    :  <LoginComponent onCookieChange={this.props.onCookieChange} />
+                }
+ 
+                
+               
             </div>
         )
     }

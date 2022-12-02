@@ -15,6 +15,10 @@ class CookieController {
         }
     }
 
+    removeCookie(){
+        return Cookies.remove(this.cookieName);
+    }
+
     setCookie(){
         if (Cookies.get(this.cookieName)) {
             return false;

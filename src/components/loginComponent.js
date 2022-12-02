@@ -2,8 +2,8 @@ import React from "react";
 import CookieInstation from "../controllers/cookieController";
 
 class LoginComponent extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             username: '',
@@ -28,6 +28,8 @@ class LoginComponent extends React.Component{
         // Cookie creation
         if (isCorrect) {
             CookieInstation.setCookie();
+            
+            queueMicrotask( () => this.props.onCookieChange( CookieInstation.getCookieInfo() ));
         }
     }
 
