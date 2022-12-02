@@ -6,7 +6,15 @@ class MenuComponent extends React.Component{
     constructor(props){
         super(props);
 
+        this.state = {
+            menuLocation: 'home',
+            earlierMenuLocation: false
+        }
+
         this.logout = this.logout.bind(this);
+        this.displayProperMenuContent = this.displayProperMenuContent.bind(this);
+        this.handleMenuChange = this.handleMenuChange.bind(this);
+        this.goToPreviousPage = this.goToPreviousPage.bind(this);
     }    
 
     logout(){
@@ -14,10 +22,59 @@ class MenuComponent extends React.Component{
         this.props.onCookieChange({});
     }
 
+    handleMenuChange(e){
+        const menuLocation = e.target.attributes['data-place'].value;
+        
+        this.props.onMenuChange(menuLocation); // Ref to main comp.
+        this.setState((state, props) => ({
+            earlierMenuLocation: state.menuLocation,
+            menuLocation
+        }))
+    }
+
+    goToPreviousPage(){
+        this.props.onMenuChange(this.state.earlierMenuLocation); // Ref to main comp.
+        this.setState({menuLocation: this.state.earlierMenuLocation, earlierMenuLocation: false})
+    }
+
+    displayProperMenuContent(){
+        switch (this.state.menuLocation) {
+            case 'home':
+                return (
+                <div className="homepage__container">
+                    <h2>Homepage</h2>
+                </div>
+                )
+            case 'locations':
+                return (
+                <div className="locations__container">
+                    <h2>Locations</h2>
+                </div>
+                )
+            case 'teams':
+                return (
+                <div className="teams__container">
+                    <h2>Teams</h2>
+                </div>
+                )
+            case 'events':
+                return (
+                <div className="events__container">
+                    <h2>Events</h2>
+                </div>
+                )
+            default:
+                break;
+        }
+    }
+
+
     render(){
         return (
             <div className="navbar__container">
-
+                
+                <button disabled={!this.state.earlierMenuLocation} onClick={this.goToPreviousPage} href="#"> BACK </button>
+                
                 { this.props.cookieInfo && this.props.cookieInfo.username ? (
                     <div>
                         Hello, {this.props.cookieInfo.username}
@@ -27,6 +84,14 @@ class MenuComponent extends React.Component{
                     :  <LoginComponent onCookieChange={this.props.onCookieChange} />
                 }
                
+                <ul>
+                    <li><a onClick={this.handleMenuChange} data-place="home" href="#">HOME</a></li>
+                    <li><a onClick={this.handleMenuChange} data-place="locations" href="#">MIEJSCA</a></li>
+                    <li><a onClick={this.handleMenuChange} data-place="teams" href="#">DRUZYNY</a></li>
+                    <li><a onClick={this.handleMenuChange} data-place="events" href="#">WYDARZENIA</a></li>
+                </ul>
+
+                {this.displayProperMenuContent()}
             </div>
         )
     }
