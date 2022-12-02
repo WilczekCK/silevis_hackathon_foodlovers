@@ -47,8 +47,8 @@ class LoginComponent extends React.Component{
 
     render(){
         return (
-            <div class="login__container">
-                <h2 class="login__container__response">
+            <div className="login__container">
+                <h2 className="login__container__response">
                     { this.createLoginResponse() }
                 </h2>
 
