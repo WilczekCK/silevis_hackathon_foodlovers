@@ -7,7 +7,7 @@ class MenuComponent extends React.Component{
         super(props);
 
         this.state = {
-            menuSelected: 'home'
+            menuLocation: 'home'
         }
 
         this.logout = this.logout.bind(this);
@@ -21,13 +21,14 @@ class MenuComponent extends React.Component{
     }
 
     handleMenuChange(e){
-        this.setState({
-            menuSelected: e.target.attributes['data-place'].value
-        })
+        const menuLocation = e.target.attributes['data-place'].value;
+        
+        this.props.onMenuChange(menuLocation);
+        this.setState({menuLocation});
     }
 
     displayProperMenuContent(){
-        switch (this.state.menuSelected) {
+        switch (this.state.menuLocation) {
             case 'home':
                 return (
                 <div className="homepage__container">

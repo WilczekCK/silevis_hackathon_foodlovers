@@ -9,23 +9,28 @@ class App extends React.Component{
     super();
 
     this.state = {
-      cookieInfo: CookieInstation.getCookieInfo()
+      cookieInfo: CookieInstation.getCookieInfo(),
+      menuLocation: 'home'
     }
 
     this.setCookieInfo = this.setCookieInfo.bind(this);
+    this.setMenuLocation = this.setMenuLocation.bind(this);
   }
 
   setCookieInfo( cookieInfo ){
     return this.setState({ cookieInfo });
   }
 
+  setMenuLocation( menuLocation ){
+    return this.setState({ menuLocation });
+  }
 
   render(){
     return (
       <div className="App">
           <div className="App__map"></div>
           <div className="App__menu">
-            <MenuComponent cookieInfo={this.state.cookieInfo} onCookieChange={this.setCookieInfo}/>
+            <MenuComponent cookieInfo={this.state.cookieInfo} onMenuChange={this.setMenuLocation} onCookieChange={this.setCookieInfo}/>
    
           </div>
       </div>
