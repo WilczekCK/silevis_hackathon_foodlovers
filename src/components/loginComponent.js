@@ -29,7 +29,7 @@ class LoginComponent extends React.Component{
         if (isCorrect) {
             CookieInstation.setCookie();
             
-            queueMicrotask( () => this.props.onCookieChange( CookieInstation.getCookieInfo() ));
+            queueMicrotask(() => this.props.onCookieChange( CookieInstation.getCookieInfo() ));
         }
     }
 

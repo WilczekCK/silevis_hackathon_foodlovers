@@ -9,16 +9,11 @@ class MenuComponent extends React.Component{
         this.logout = this.logout.bind(this);
     }    
 
-    onlogin(){
-
-    }
-
     logout(){
         CookieInstation.removeCookie();
         this.props.onCookieChange({});
     }
 
-    //
     render(){
         return (
             <div className="navbar__container">
@@ -31,8 +26,6 @@ class MenuComponent extends React.Component{
                     </div>)
                     :  <LoginComponent onCookieChange={this.props.onCookieChange} />
                 }
- 
-                
                
             </div>
         )
