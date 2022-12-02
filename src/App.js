@@ -35,7 +35,9 @@ class App extends React.Component{
     return (
       <div className="App">
           <div className="App__map">
-            <Map/>
+            <Map
+              onMenuChange={this.setMenuLocation}
+            />
           </div>
           <div className="App__menu">
             <MenuComponent 

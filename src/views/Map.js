@@ -21,8 +21,14 @@ class Map extends React.Component{
             {id:3, name:'Zwykla kopanina', pos:[50.87371, 20.63187]},
             {id:4, name:'Spontan akcja', pos:[50.86979, 20.64189]}
         ]
+
+        this.changeMenuLocation = this.changeMenuLocation.bind(this);
     }
 
+
+    changeMenuLocation(){
+        return this.props.onMenuChange('events');
+    }
 
     render(){
         return (
@@ -37,7 +43,7 @@ class Map extends React.Component{
                     <Marker key={index} position={event.pos}>
                         <Popup>
                             <h3>{event.name}</h3>
-                            <a href="#"> PRZEJDŹ DO WYDARZENIA </a>
+                            <a onClick={ this.changeMenuLocation }href="#"> PRZEJDŹ DO WYDARZENIA </a>
                         </Popup>
                     </Marker>
                 )}
