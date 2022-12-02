@@ -31,6 +31,14 @@ html, body, #root{height:100%; width:100%; color:white;}
 .App__map{width:75%; height:100%;}
 .App__menu{width:25%; min-width:315px; background: var(--hackathon-bg); height:100%;}
 
-.homepage__container{ margin-top:100px; margin-left:35px; margin-right:35px; }
-.homepage__container h1{font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500; margin-bottom:50px;}
-.homepage__container p{color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px;}
+.homepage__container{ display:flex; flex-direction:column; margin-left:35px; margin-right:35px; height:100%;}
+.homepage__container h1{margin-top:100px; font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500;}
+.homepage__container p{flex-grow:1; color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px; margin-bottom:50px;}
+
+.homepage__container .homepage__container__bottomAlign{display:flex; flex-direction: column-reverse; width:100%; flex-grow:2;}
+.homepage__container .homepage__container__bottomAlign hr{color:var(--hackathon-main); width:100%;}
+.homepage__container .homepage__container__bottomAlign a { color: var(--hackathon-fontPararaphs); font-size:24px; font-family:var(--hackathon-fontHeading) }
+.homepage__container .homepage__container__bottomAlign > * { margin:8px 0px; }
+
+.homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal{display:flex; flex-direction: row; flex-wrap:wrap; margin-top:50px; margin-bottom:25px;}
+.homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal button{ background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}
