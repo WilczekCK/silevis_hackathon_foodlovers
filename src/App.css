@@ -1,8 +1,13 @@
 html, body, #root{height:100%; width:100%;}
+:root{
+  --hackathon-bg: #2c2c2c;
+  --hackathon-main: #357834;
+  --hackathon-textdark: #8a8a8a;
+}
 
 /* LEAFLET */
 .leaflet-container{height:100%;}
 
 .App{ display:flex; flex-direction: row; height:100%; width:100%; }
 .App__map{width:75%; height:100%;}
-.App__menu{width:25%; min-width:315px; background: whitesmoke; height:100%;}
+.App__menu{width:25%; min-width:315px; background: #2c2c2c; height:100%;}
