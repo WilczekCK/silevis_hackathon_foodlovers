@@ -6,6 +6,7 @@ import CookieInstation from "./controllers/cookieController";
 import MenuComponent from './components/menuComponent'
 import Map from './views/Map'
 import './App.css';
+import './assets/normalize.css';
 
 
 
