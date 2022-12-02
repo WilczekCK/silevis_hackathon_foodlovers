@@ -7,7 +7,6 @@ class MenuComponent extends React.Component{
         super(props);
 
         this.state = {
-            menuLocation: 'home',
             earlierMenuLocation: false
         }
 
@@ -27,8 +26,7 @@ class MenuComponent extends React.Component{
         
         this.props.onMenuChange(menuLocation); // Ref to main comp.
         this.setState((state, props) => ({
-            earlierMenuLocation: state.menuLocation,
-            menuLocation
+            earlierMenuLocation: this.props.menuLocation
         }))
     }
 
@@ -38,7 +36,7 @@ class MenuComponent extends React.Component{
     }
 
     displayProperMenuContent(){
-        switch (this.state.menuLocation) {
+        switch (this.props.menuLocation) {
             case 'home':
                 return (
                 <div className="homepage__container">

@@ -41,6 +41,7 @@ class App extends React.Component{
             <MenuComponent 
               cookieInfo={this.state.cookieInfo}
               onCookieChange={this.setCookieInfo}
+              menuLocation={this.state.menuLocation}
               onMenuChange={this.setMenuLocation}
             />
           </div>
