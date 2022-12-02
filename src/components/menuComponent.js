@@ -1,6 +1,7 @@
 import React from "react";
 import CookieInstation from "../controllers/cookieController";
 import LoginComponent from './loginComponent';
+import Events from '../views/Events'
 
 class MenuComponent extends React.Component{
     constructor(props){
@@ -58,22 +59,7 @@ class MenuComponent extends React.Component{
                 </div>
                 )
             case menuLocation.includes('events'):
-                const menuLocationId = menuLocation.replace(/\D/g, "");
-
-                if( menuLocationId ) {
-                    return (
-                        <div className="events__container">
-                            <h2>Event number {menuLocationId}</h2>
-                        </div>
-                    )
-                } else {
-                    return (
-                        <div className="events__container">
-                            <h2>Events</h2>
-                        </div>
-                    )
-                }
-
+                return <Events menuLocationId={menuLocation.replace(/\D/g, "")} />
             default:
                 break;
         }
