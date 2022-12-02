@@ -1,13 +1,36 @@
-html, body, #root{height:100%; width:100%;}
+html, body, #root{height:100%; width:100%; color:white;}
 :root{
   --hackathon-bg: #2c2c2c;
   --hackathon-main: #357834;
-  --hackathon-textdark: #8a8a8a;
+  --hackathon-textdark: #f8f8f8;
+  --hackathon-fontHeading: 'Karla Bold';
+  --hackathon-fontContent: 'Karla Regular';
+  --hackathon-fontPararaphs: 'Karla Medium';
+}
+
+@font-face {
+  font-family: "Karla Regular";
+  src: url('assets/fonts/Karla-Regular.ttf');
+}
+@font-face {
+  font-family: "Karla Medium";
+  src: url('assets/fonts/Karla-Medium.ttf');
+}
+@font-face {
+  font-family: "Karla Bold";
+  src: url('assets/fonts/Karla-Bold.ttf');
 }
 
 /* LEAFLET */
 .leaflet-container{height:100%;}
 
+/* TEMP */
+.navbar__container{display:none}
+
 .App{ display:flex; flex-direction: row; height:100%; width:100%; }
 .App__map{width:75%; height:100%;}
-.App__menu{width:25%; min-width:315px; background: #2c2c2c; height:100%;}
+.App__menu{width:25%; min-width:315px; background: var(--hackathon-bg); height:100%;}
+
+.homepage__container{ margin-top:100px; margin-left:35px; margin-right:35px; }
+.homepage__container h1{font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500; margin-bottom:50px;}
+.homepage__container p{color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px;}

@@ -70,28 +70,32 @@ class MenuComponent extends React.Component{
 
     render(){
         return (
-            <div className="navbar__container">
+            <>
+                <div className="navbar__container">
+                    
+                    <button disabled={!this.state.earlierMenuLocation} onClick={this.goToPreviousPage} href="#"> BACK </button>
+                    
+                    { this.props.cookieInfo && this.props.cookieInfo.username ? (
+                        <div>
+                            Hello, {this.props.cookieInfo.username}
+                            <br />
+                            <button onClick={this.logout}>Logout</button>
+                        </div>)
+                        :  <LoginComponent onCookieChange={this.props.onCookieChange} />
+                    }
                 
-                <button disabled={!this.state.earlierMenuLocation} onClick={this.goToPreviousPage} href="#"> BACK </button>
-                
-                { this.props.cookieInfo && this.props.cookieInfo.username ? (
-                    <div>
-                        Hello, {this.props.cookieInfo.username}
-                        <br />
-                        <button onClick={this.logout}>Logout</button>
-                    </div>)
-                    :  <LoginComponent onCookieChange={this.props.onCookieChange} />
-                }
-               
-                <ul>
-                    <li><a onClick={this.handleMenuChange} data-place="home" href="#">HOME</a></li>
-                    <li><a onClick={this.handleMenuChange} data-place="locations" href="#">MIEJSCA</a></li>
-                    <li><a onClick={this.handleMenuChange} data-place="teams" href="#">DRUZYNY</a></li>
-                    <li><a onClick={this.handleMenuChange} data-place="events" href="#">WYDARZENIA</a></li>
-                </ul>
+                    <ul>
+                        <li><a onClick={this.handleMenuChange} data-place="home" href="#">HOME</a></li>
+                        <li><a onClick={this.handleMenuChange} data-place="locations" href="#">MIEJSCA</a></li>
+                        <li><a onClick={this.handleMenuChange} data-place="teams" href="#">DRUZYNY</a></li>
+                        <li><a onClick={this.handleMenuChange} data-place="events" href="#">WYDARZENIA</a></li>
+                    </ul>
 
+                
+                </div>
+            
                 {this.displayProperMenuContent()}
-            </div>
+            </>
         )
     }
 }
