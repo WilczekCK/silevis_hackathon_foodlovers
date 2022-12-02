@@ -1,5 +1,8 @@
 html, body, #root{height:100%; width:100%;}
 
+/* LEAFLET */
+.leaflet-container{height:100%;}
+
 .App{ display:flex; flex-direction: row; height:100%; width:100%; }
-.App__map{width:75%; background-image:url(https://i.stack.imgur.com/RdkOb.jpg); height:100%;}
+.App__map{width:75%; height:100%;}
 .App__menu{width:25%; min-width:315px; background: whitesmoke; height:100%;}

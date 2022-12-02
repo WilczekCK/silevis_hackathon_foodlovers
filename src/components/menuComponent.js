@@ -1,13 +1,13 @@
 import React from "react";
 import CookieInstation from "../controllers/cookieController";
 import LoginComponent from './loginComponent';
+import Events from '../views/Events'
 
 class MenuComponent extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            menuLocation: 'home',
             earlierMenuLocation: false
         }
 
@@ -27,8 +27,7 @@ class MenuComponent extends React.Component{
         
         this.props.onMenuChange(menuLocation); // Ref to main comp.
         this.setState((state, props) => ({
-            earlierMenuLocation: state.menuLocation,
-            menuLocation
+            earlierMenuLocation: this.props.menuLocation
         }))
     }
 
@@ -38,31 +37,29 @@ class MenuComponent extends React.Component{
     }
 
     displayProperMenuContent(){
-        switch (this.state.menuLocation) {
-            case 'home':
+        const menuLocation = this.props.menuLocation;
+
+        switch (true) {
+            case menuLocation.includes('home'):
                 return (
                 <div className="homepage__container">
                     <h2>Homepage</h2>
                 </div>
                 )
-            case 'locations':
+            case menuLocation.includes('locations'):
                 return (
                 <div className="locations__container">
                     <h2>Locations</h2>
                 </div>
                 )
-            case 'teams':
+            case menuLocation.includes('teams'):
                 return (
                 <div className="teams__container">
                     <h2>Teams</h2>
                 </div>
                 )
-            case 'events':
-                return (
-                <div className="events__container">
-                    <h2>Events</h2>
-                </div>
-                )
+            case menuLocation.includes('events'):
+                return <Events menuLocationId={menuLocation.replace(/\D/g, "")} />
             default:
                 break;
         }
