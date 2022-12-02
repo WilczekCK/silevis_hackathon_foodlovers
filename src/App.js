@@ -30,8 +30,11 @@ class App extends React.Component{
       <div className="App">
           <div className="App__map"></div>
           <div className="App__menu">
-            <MenuComponent cookieInfo={this.state.cookieInfo} onMenuChange={this.setMenuLocation} onCookieChange={this.setCookieInfo}/>
-   
+            <MenuComponent 
+              cookieInfo={this.state.cookieInfo}
+              onCookieChange={this.setCookieInfo}
+              onMenuChange={this.setMenuLocation}
+            />
           </div>
       </div>
     )
