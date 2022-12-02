@@ -22,7 +22,8 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <MenuComponent cookieInfo={this.state.cookieInfo} onCookieChange={this.setCookieInfo}/>
+          <div className="App__map"></div>
+          <div className="App__menu"></div>
       </div>
     )
   }

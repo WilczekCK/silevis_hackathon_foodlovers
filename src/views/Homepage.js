@@ -8,10 +8,7 @@ class Homepage extends React.Component{
 
     render(){
         return (
-            <div className="homepage__container">
-                <div className="homepage__container--map"></div>
-                <div className="homepage__container--menu"></div>
-            </div>
+            <div></div>
         )
     }
 }
