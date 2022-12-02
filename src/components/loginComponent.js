@@ -17,10 +17,17 @@ class LoginComponent extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
+        const correctLogin = 'test';
+        const correctPassword = 'test';
 
-        const isCorrect = this.state.username === 'test' && this.state.password === 'test';
-
+        // State managment, if logged or not
+        const isCorrect = this.state.username === correctLogin && this.state.password === correctPassword;
         this.setState({ isValid: isCorrect });
+
+        // Cookie creation
+        if (isCorrect) {
+        
+        }
     }
 
     handleInputs(e){
@@ -41,7 +48,7 @@ class LoginComponent extends React.Component{
         return (
             <div class="login__container">
                 <h2 class="login__container__response">
-                    {this.createLoginResponse()}
+                    { this.createLoginResponse() }
                 </h2>
 
                 <form onSubmit={this.handleSubmit}>
