@@ -16,10 +16,10 @@ class Map extends React.Component{
         super();
 
         this.listOfEvents = [
-            [50.86942, 20.61824],
-            [50.86884, 20.63111],
-            [50.87371, 20.63187],
-            [50.86979, 20.64189]
+            {id:1, name:'Liga młodziaków', pos:[50.86942, 20.61824]},
+            {id:2, name:'Liga narodów', pos:[50.86884, 20.63111]},
+            {id:3, name:'Zwykla kopanina', pos:[50.87371, 20.63187]},
+            {id:4, name:'Spontan akcja', pos:[50.86979, 20.64189]}
         ]
     }
 
@@ -33,10 +33,11 @@ class Map extends React.Component{
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {this.listOfEvents.map((mapPos, index) => 
-                    <Marker key={index} position={mapPos}>
+                {this.listOfEvents.map((event, index) => 
+                    <Marker key={index} position={event.pos}>
                         <Popup>
-                        Zajebscie :D
+                            <h3>{event.name}</h3>
+                            <a href="#"> PRZEJDŹ DO WYDARZENIA </a>
                         </Popup>
                     </Marker>
                 )}
