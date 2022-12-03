@@ -4,14 +4,14 @@ class CookieController {
     cookieName;
 
     constructor(){
-        this.cookieName = "hackathon_project"
+        this.cookieName = "hackathon_project_dupa"
     }
 
     getCookieInfo(){
         const cookieInfo = Cookies.get(this.cookieName);
 
         if (cookieInfo) {
-            return JSON.parse(cookieInfo);
+            return cookieInfo;
         }
     }
 
@@ -19,11 +19,13 @@ class CookieController {
         return Cookies.remove(this.cookieName);
     }
 
-    setCookie(){
+    setCookie( token ){
         if (Cookies.get(this.cookieName)) {
             return false;
         } else {
-            Cookies.set(this.cookieName, '{"username":"test", "role":"basic", "token":"AbCdEf"}', {expires: 7, path: ''});
+            const cookie = token;
+
+            Cookies.set(this.cookieName, cookie, {expires: 7, path: '/', sameSite:'none'});
             return true;
         }
         

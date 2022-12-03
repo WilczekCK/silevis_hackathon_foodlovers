@@ -1,12 +1,15 @@
+import axios from "axios";
 import React from "react";
-import CookieInstation from "../controllers/cookieController";
+import jwt from 'jwt-decode'
+import CookieController from "../controllers/cookieController";
+
 
 class LoginComponent extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
             isValid: undefined,
         }
@@ -18,19 +21,21 @@ class LoginComponent extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        const correctLogin = 'test';
-        const correctPassword = 'test';
-
         // State managment, if logged or not
-        const isCorrect = this.state.username === correctLogin && this.state.password === correctPassword;
-        this.setState({ isValid: isCorrect });
+        axios.post('/api/Auth/Login', {
+            email: this.state.email,
+            password: this.state.password
+        }).then((response) => {
+            this.setState({ isValid: true });
+            // const translation = response.data;
 
-        // Cookie creation
-        if (isCorrect) {
-            CookieInstation.setCookie();
-            
-            queueMicrotask(() => this.props.onCookieChange( CookieInstation.getCookieInfo() ));
-        }
+
+            CookieController.setCookie(response.data);
+        }).catch(() => {
+            this.setState({ isValid: false });
+        });
+
+
     }
 
     handleInputs(e){
@@ -41,9 +46,9 @@ class LoginComponent extends React.Component{
         if ( this.state.isValid === undefined ){
             return '';
         } else if( this.state.isValid ) {
-            return 'Logged in';
+            return 'Zalogowałeś się!';
         } else {
-            return 'Wrong credentials';
+            return 'Brak takiego konta bądź złe dane logowania';
         }
     }
 
@@ -54,12 +59,30 @@ class LoginComponent extends React.Component{
                     { this.createLoginResponse() }
                 </h2>
 
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleInputs} />
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
+                {
+                    !this.state.isValid || this.state.isValid === undefined 
+                    ? (
+                    <>
+                        <h1> Logowanie </h1>
+                            <form onSubmit={this.handleSubmit}>
+                            <label>
+                                E-Mail:
+                                <input type="text" name="email" value={this.state.email} onChange={this.handleInputs} />
+                            </label>
+                            <br/>
+                            <label>
+                                Hasło:
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
+                            </label>
+                            <br/>
+                            <input type="submit" value="Login"/>
+                        </form>
+                    </>
+                    )
+                    : 'Cofnij się by kontynuować'
+                }
 
-                    <input type="submit" value="Login"/>
-                </form>
+
             </div>
         )
     }
