@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import React from "react";
-import CookieInstation from "./controllers/cookieController";
+import CookieController from "./controllers/cookieController";
 import LoginToolbarButtons from './components/LoginToolbarButtons'
 import PreviousPageButton from './components/previousPageComponent'
 import Login from './views/Login';
@@ -12,18 +12,19 @@ import Map from './views/Map'
 import './App.css';
 import './assets/normalize.css';
 import {createBrowserRouter, RouterProvider, redirect} from 'react-router-dom'
+import axios from "axios";
+import Cookies from 'js-cookie';
 
+axios.defaults.baseURL = 'http://192.168.1.118:5038'
 
 class App extends React.Component{
   constructor(){
     super();
 
     this.state = {
-      cookieInfo: CookieInstation.getCookieInfo(),
+      cookieInfo: CookieController.getCookieInfo(),
       menuLocation: 'home',
     }
-
-    this.setCookieInfo = this.setCookieInfo.bind(this);
 
     this.router = createBrowserRouter([
       {
@@ -104,15 +105,6 @@ class App extends React.Component{
       }
     ])
   }
-
-  setCookieInfo( cookieInfo ){
-    if(!cookieInfo.username){
-      CookieInstation.removeCookie();
-    }
-    
-    this.setState({ cookieInfo });
-  }
-
 
   
   setMenuLocation( menuLocation ){

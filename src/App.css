@@ -27,6 +27,8 @@ html, body, #root{height:100%; width:100%; color:white;}
 /* TEMP */
 .navbar__container{display:none}
 
+*{font-family:var(--hackathon-fontContent)}
+
 label{display:flex; flex-direction: column; margin-bottom:15px; font-family:var(--hackathon-fontPararaphs); font-size:18px}
 label span{margin-bottom:5px;}
 label input{ padding:7.5px 5px; background:var(--hackathon-textdark); border:unset; }
@@ -35,9 +37,9 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .App{ display:flex; flex-direction: row; height:100%; width:100%; }
 .App__map{width:75%; height:100%;}
 .App__menu{width:25%; min-width:315px; background: var(--hackathon-bg); height:100%;  padding-left:35px; padding-right:35px;}
-
+.App__menu > *:first-of-type{ padding-top:25px; box-sizing: border-box; }
 .homepage__container{ display:flex; flex-direction:column; height:90%;}
-.homepage__container h1{margin-top:100px; font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500;}
+.homepage__container h1{font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500;}
 .homepage__container p{flex-grow:1; color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px; margin-bottom:50px;}
 
 .homepage__container .homepage__container__bottomAlign{display:flex; flex-direction: column-reverse; width:100%; flex-grow:2;}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class PreviousPageButton extends React.Component{
     constructor(){
@@ -9,7 +9,7 @@ class PreviousPageButton extends React.Component{
     render(){
         return (
             <div class="login_toolbar">
-                <Link to="/"> <button>  BACK </button> </Link> 
+                <Link to="/"> <button> WROC </button> </Link> 
             </div>
         )
     }
