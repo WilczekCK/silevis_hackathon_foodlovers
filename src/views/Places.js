@@ -27,6 +27,8 @@ class Place extends React.Component{
 
         this.createNewEvent = this.createNewEvent.bind(this);
         this.handleInputs = this.handleInputs.bind(this);
+        this.displayProperButton = this.displayProperButton.bind(this);
+        this.addToEvent = this.addToEvent.bind(this);
     }
 
 
@@ -63,9 +65,36 @@ class Place extends React.Component{
         console.log(e.target.value);
     }
 
+    addToEvent(e){
+        const cookieTranslated = jwt(this.state.cookie);
+        const eventId = e.target.attributes['data-event-id'].value;
+        e.target.value = "DOŁACZONO";
+
+        
+        axios.post(`/api/Event/AddTeam/`, {
+            teamId: cookieTranslated.TeamId,
+            eventId
+        }, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
+            console.log(response);
+        });
+    }
+
+
+    displayProperButton( eventTeamId, cookieTranslated, secondTeam, eventId ){
+        if(parseInt(eventTeamId) === parseInt(cookieTranslated.TeamId)){
+            return (<button>DOŁACZONO</button>)
+        } else if(  secondTeam === undefined  ) {
+            return (<button data-event-id={eventId} onClick={this.addToEvent}>DOŁACZ</button> )
+        } else {
+            return (<button>BRAK MIEJSC</button> )
+        }
+    }
+
     render(){
         const cookieTranslated = jwt(this.state.cookie);
         console.log(cookieTranslated);
+
+        
 
         return (
             <>
@@ -76,7 +105,8 @@ class Place extends React.Component{
                                 <h4>{item.name}</h4>
                                 <span>{new Date(item.date).toLocaleString()}</span>
                                 <span>{item.location.address}</span>
-                                <button>DOŁACZ</button>
+                            
+                                { this.displayProperButton(item.teams[0].id, cookieTranslated, item.teams[1], item.id) }
                             </li>
                         ))}
                     </ul>
