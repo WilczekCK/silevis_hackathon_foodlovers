@@ -8,8 +8,8 @@ class PreviousPageButton extends React.Component{
 
     render(){
         return (
-            <div class="login_toolbar">
-                <Link to="/"> <button> WROC </button> </Link> 
+            <div className="login_toolbar">
+                <Link to="/"> <button> &lsaquo; WROC </button> </Link> 
             </div>
         )
     }

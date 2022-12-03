@@ -18,10 +18,9 @@ class Map extends React.Component{
         super();
 
         this.listOfEvents = [
-            {id:1, name:'Zytnia Hala', pos:[50.86942, 20.61824]},
-            {id:2, name:'KSM Szkola', pos:[50.86884, 20.63111]},
-            {id:3, name:'Zagorska Pole', pos:[50.87371, 20.63187]},
-            {id:4, name:'Srodmiescie Boisko', pos:[50.86979, 20.64189]}
+            {id:5, name:'Zytnia Hala', pos:[50.86942, 20.61824]},
+            {id:7, name:'Zagorska Pole', pos:[50.87371, 20.63187]},
+            {id:8, name:'Srodmiescie Boisko', pos:[50.86979, 20.64189]}
         ]
     }
 

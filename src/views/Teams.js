@@ -69,7 +69,7 @@ class Teams extends React.Component{
                     <>
                         <h1>Druzyna <br/>{this.state.teamName}</h1>
                         
-                        <div class="teams__container__list">
+                        <div className="teams__container__list">
                         {this.state.teamMembers.map(item => (
                             <li key={item.id}> 
                                 <h4> {this.state.capitanId === item.id ? <img src={crown_icon} /> : ''} {item.firstName} {item.lastName}</h4>
@@ -83,7 +83,7 @@ class Teams extends React.Component{
                     <h1>Druzyna</h1>
                     <h3>Nie masz jeszcze druzyny? <br/>Potrzebujemy Cie w naszym składzie!<br/></h3>
 
-                    <div class="teams__container__list">
+                    <div className="teams__container__list">
                         {this.state.teams.map(item => (
                             <li key={item.id}> 
                                 <h4>{item.name}</h4>

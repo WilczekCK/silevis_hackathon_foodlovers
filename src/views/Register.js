@@ -2,7 +2,9 @@ import React from "react";
 import LoginComponent from "../components/loginComponent";
 import CookieController from "../controllers/cookieController";
 import axios from "axios";
-import icon_namesurname from '../assets/icons/icon_nameandsurname_black.png';
+import namesurname_icon from '../assets/icons/icon_nameandsurname_black.png';
+import password_icon from '../assets/icons/icon_password_black.png';
+import email_icon from '../assets/icons/icon_mail_black.png';
 
 
 class Register extends React.Component{
@@ -33,29 +35,33 @@ class Register extends React.Component{
     
     render(){
         return (
-            <div class="register__container">
+            <div className="register__container">
                 <h1> Rejestracja </h1>
                 {!this.state.isRegistered ?
                 <form onSubmit={this.handleSubmit}>
 
                     <label>
                     <span>Imię </span>
+                    <img src={namesurname_icon} />
                     <input type="text" name="firstName" placeholder="Jan" onChange={this.handleInput} />
                     </label>
 
                     <label>
                         <span>Nazwisko</span>
+                        <img src={namesurname_icon} />
                         <input type="text" name="lastName" placeholder="Kowalski" onChange={this.handleInput} />
                     </label>
 
                     <label>
-                    <span>Adres e-mail</span>
-                    <input type="email" name="email" placeholder="jankowal@onet.pl" onChange={this.handleInput}/>
+                        <span>Adres e-mail</span>
+                        <img src={email_icon} />
+                        <input type="email" name="email" placeholder="jankowal@onet.pl" onChange={this.handleInput}/>
                     </label>
 
                     <label>
-                    <span>Hasło</span>
-                    <input type="password" name="password" placeholder="***** ***" onChange={this.handleInput}/>
+                        <span>Hasło</span>
+                        <img src={password_icon} />
+                        <input type="password" name="password" placeholder="***** ***" onChange={this.handleInput}/>
                     </label>
 
                     <input type="submit" value="Zarejestruj sie" />
