@@ -13,7 +13,7 @@ class Homepage extends React.Component{
 
     render(){
         return (
-            <>
+            <div className="homepage__container">
                 <h1>Witaj<br/> w BookSport!</h1>
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
@@ -23,8 +23,7 @@ class Homepage extends React.Component{
 
                     <hr/>
                 </div>
-                
-            </>
+            </div>
         )
     }
 }

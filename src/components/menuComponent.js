@@ -1,4 +1,5 @@
 import React from "react";
+
 import CookieInstation from "../controllers/cookieController";
 import LoginToolbarButtons from './LoginToolbarButtons';
 
@@ -64,7 +65,12 @@ class MenuComponent extends React.Component{
             case menuLocation.includes('events'):
                 return <Events menuLocationId={menuLocation.replace(/\D/g, "")} />
             case menuLocation.includes('login'):
-                return <Login onCookieChange={this.props.onCookieChange}/>
+                return (
+                    <Login 
+                        onCookieChange={this.props.onCookieChange}
+
+                    />
+                )
             default:
                 break;
         }
