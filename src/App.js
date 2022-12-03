@@ -48,6 +48,7 @@ class App extends React.Component{
               <Map/>
             </div>
             <div className="App__menu">
+              <PreviousPageButton />
               <Register />
             </div>
           </>
@@ -61,6 +62,7 @@ class App extends React.Component{
               <Map/>
             </div>
             <div className="App__menu">
+              <PreviousPageButton />
               <Login onCookieChange={this.setCookieInfo}/>
             </div>
           </>

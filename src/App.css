@@ -27,6 +27,11 @@ html, body, #root{height:100%; width:100%; color:white;}
 /* TEMP */
 .navbar__container{display:none}
 
+label{display:flex; flex-direction: column; margin-bottom:15px; font-family:var(--hackathon-fontPararaphs); font-size:18px}
+label span{margin-bottom:5px;}
+label input{ padding:7.5px 5px; background:var(--hackathon-textdark); border:unset; }
+input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; margin-top:15px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}
+
 .App{ display:flex; flex-direction: row; height:100%; width:100%; }
 .App__map{width:75%; height:100%;}
 .App__menu{width:25%; min-width:315px; background: var(--hackathon-bg); height:100%;  padding-left:35px; padding-right:35px;}

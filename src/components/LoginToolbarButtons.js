@@ -30,10 +30,12 @@ class LoginToolbarButtons extends React.Component{
             {this.state.cookieInfo === undefined
                 ? (
                     <div className="login_toolbar">
-                        <button>
-                            <Link to="login">Zaloguj sie</Link>
-                        </button>
-                        <button>Zarejestruj sie</button>
+                        <Link to="login">
+                            <button>Zaloguj sie</button>
+                        </Link>
+                        <Link to="register">
+                            <button>Zarejestruj sie</button>
+                        </Link>
                     </div>
                 ) : (
                     <div className="login_toolbar">
