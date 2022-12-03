@@ -4,6 +4,7 @@ import React from "react";
 import icon from '../assets/leaflet/images/marker-icon.png';
 import iconShadow from '../assets/leaflet/images/marker-shadow.png';
 import '../assets/leaflet/leaflet.css';
+import {Link, Outlet, Navigate} from 'react-router-dom'
 
 // Just leaflet stuff
 let DefaultIcon = L.icon({
@@ -22,15 +23,6 @@ class Map extends React.Component{
             {id:3, name:'Zwykla kopanina', pos:[50.87371, 20.63187]},
             {id:4, name:'Spontan akcja', pos:[50.86979, 20.64189]}
         ]
-
-        this.changeMenuLocation = this.changeMenuLocation.bind(this);
-    }
-
-
-    changeMenuLocation(e){
-        const menuLocation = e.target.attributes['data-event'].value;
-
-        return this.props.onMenuChange(`events/${menuLocation}`);
     }
 
     render(){
@@ -46,7 +38,7 @@ class Map extends React.Component{
                     <Marker key={index} position={event.pos}>
                         <Popup>
                             <h3>{event.name}</h3>
-                            <a onClick={ this.changeMenuLocation } data-event={event.id} href="#"> PRZEJDŹ DO WYDARZENIA </a>
+                            <Link reloadDocument to={`/event/${event.id}`}> PRZEJDŹ DO WYDARZENIA </Link>
                         </Popup>
                     </Marker>
                 )}

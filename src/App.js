@@ -2,13 +2,14 @@ import logo from './logo.svg';
 import React from "react";
 import CookieInstation from "./controllers/cookieController";
 import LoginToolbarButtons from './components/LoginToolbarButtons'
+import PreviousPageButton from './components/previousPageComponent'
 import Login from './views/Login';
 import Homepage from './views/Homepage';
 import Events from './views/Events';
 import Map from './views/Map'
 import './App.css';
 import './assets/normalize.css';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import {createBrowserRouter, RouterProvider, redirect} from 'react-router-dom'
 
 
 class App extends React.Component{
@@ -17,29 +18,58 @@ class App extends React.Component{
 
     this.state = {
       cookieInfo: CookieInstation.getCookieInfo(),
-      menuLocation: 'home'
+      menuLocation: 'home',
     }
 
     this.setCookieInfo = this.setCookieInfo.bind(this);
-    this.setMenuLocation = this.setMenuLocation.bind(this);
 
     this.router = createBrowserRouter([
       {
         path: '/',
         element: (
           <>
-          <Homepage />
-          <LoginToolbarButtons />
+            <div className="App__map">
+              <Map/>
+            </div>
+            <div className="App__menu">
+              <Homepage />
+              <LoginToolbarButtons />
+            </div>
           </>
         )
       },  
       {
         path: '/login',
-        element: <Login onCookieChange={this.setCookieInfo}/>
+        element:  (
+          <>
+            <div className="App__map">
+              <Map/>
+            </div>
+            <div className="App__menu">
+              <Login onCookieChange={this.setCookieInfo}/>
+            </div>
+          </>
+        )
+        
+        
+      },
+      {
+        path: '/map',
+        element: <Map/>
       },
       {
         path: '/event/:eventId',
-        element: <Events />
+        element: (
+          <>
+            <div className="App__map">
+              <Map />
+            </div>
+            <div className="App__menu">
+              <PreviousPageButton />
+              <Events />
+            </div>
+          </>
+        ),
       }
     ])
   }
@@ -55,21 +85,14 @@ class App extends React.Component{
 
   
   setMenuLocation( menuLocation ){
-
+    console.log(this.router.redirect);
+  
   }
 
   render(){
     return (
       <div className="App">
-          <div className="App__map">
-            <Map
-              onMenuChange={this.setMenuLocation}
-            />
-          </div>
-          <div className="App__menu">
-
-            <RouterProvider router={this.router} />
-          </div>
+          <RouterProvider router={this.router} />  
       </div>  
       )
   }

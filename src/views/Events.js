@@ -1,5 +1,5 @@
 import React from "react";
-import {useParams} from 'react-router-dom';
+import {useParams, Router} from 'react-router-dom';
 
 export function withRouter(Children){
     return(props)=>{
@@ -13,7 +13,7 @@ class Events extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            eventId: props.match.params.eventId
+            eventId: props.match.params.eventId,
         }
     }
 
