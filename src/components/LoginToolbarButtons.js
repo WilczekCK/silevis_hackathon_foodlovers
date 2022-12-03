@@ -15,10 +15,8 @@ class LoginToolbarButtons extends React.Component{
     }
 
     logout(){
-        this.setState({
-            cookieInfo: undefined
-        })
-        this.forceUpdate();
+        CookieInstation.removeCookie()
+        this.setState({ cookieInfo: undefined })
     }
 
     changeMenuLocation(e){

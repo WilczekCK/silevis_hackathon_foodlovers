@@ -4,6 +4,7 @@ import CookieInstation from "./controllers/cookieController";
 import LoginToolbarButtons from './components/LoginToolbarButtons'
 import PreviousPageButton from './components/previousPageComponent'
 import Login from './views/Login';
+import Register from './views/Register';
 import Homepage from './views/Homepage';
 import Events from './views/Events';
 import Place from './views/Places';
@@ -35,6 +36,19 @@ class App extends React.Component{
             <div className="App__menu">
               <Homepage />
               <LoginToolbarButtons />
+            </div>
+          </>
+        )
+      }, 
+      {
+        path: '/register',
+        element: (
+          <>
+            <div className="App__map">
+              <Map/>
+            </div>
+            <div className="App__menu">
+              <Register />
             </div>
           </>
         )
