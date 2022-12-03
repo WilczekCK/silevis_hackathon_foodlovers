@@ -42,4 +42,4 @@ html, body, #root{height:100%; width:100%; color:white;}
 .homepage__container .homepage__container__bottomAlign > * { margin:8px 0px; }
 
 .homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal{display:flex; flex-direction: row; flex-wrap:wrap; margin-top:50px; margin-bottom:25px;}
-.homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal button{ background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}
+.homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}

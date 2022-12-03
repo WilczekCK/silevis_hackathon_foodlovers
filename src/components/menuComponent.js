@@ -46,7 +46,10 @@ class MenuComponent extends React.Component{
             case menuLocation.includes('home'):
                 return (
                 <div className="homepage__container">
-                    <Homepage isLoggedIn={(this.props.cookieInfo && this.props.cookieInfo.username) !== ''}/>
+                    <Homepage 
+                        isLoggedIn={(this.props.cookieInfo && this.props.cookieInfo.username)}
+                        onLogout={this.logout}
+                    />
                 </div>
                 )
             case menuLocation.includes('locations'):
