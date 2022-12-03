@@ -1,8 +1,20 @@
 import React from "react";
+import {useParams} from 'react-router-dom';
+
+export function withRouter(Children){
+    return(props)=>{
+
+       const match  = {params: useParams()};
+       return <Children {...props}  match = {match}/>
+   }
+ }
 
 class Events extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            eventId: props.match.params.eventId
+        }
     }
 
 
@@ -10,10 +22,10 @@ class Events extends React.Component{
         return (
             <>
                 {
-                    this.props.menuLocationId ?
+                    this.state.eventId ?
                         (
                             <div className="events__container">
-                                <h2>Event number {this.props.menuLocationId}</h2>
+                                <h2>Event number {this.state.eventId}</h2>
                             </div>
                         )
                     :
@@ -28,6 +40,6 @@ class Events extends React.Component{
     }
 }
 
-export default Events;
+export default withRouter(Events);
 
 
