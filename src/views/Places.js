@@ -15,15 +15,19 @@ export function withRouter(Children){
 class Place extends React.Component{
     constructor(props){
         super(props);
+
         this.state = {
             placeId: props.match.params.placeId,
             name: '',
-            date: ''
+            date: '',
+            hour: '',
+            events: []
         }
 
         this.createNewEvent = this.createNewEvent.bind(this);
         this.handleInputs = this.handleInputs.bind(this);
     }
+
 
     createNewEvent(e){
         e.preventDefault();
@@ -34,9 +38,22 @@ class Place extends React.Component{
             locationId: this.state.placeId,
             date: this.state.date
         }, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
-            console.log(response);
+            response.data.location = this.state.events[0].location; 
+
+            this.setState((state, props) => ({
+                events: [response.data, ...state.events] 
+            }))
         });
     }
+
+    componentDidMount() {
+        const cookie = CookieInstation.getCookieInfo();
+
+        axios.get(`/api/Event/ByLocation/${this.state.placeId}`, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
+            this.setState({events: response.data})
+        });
+    }
+    
 
     handleInputs(e){
         this.setState({[e.target.name]: e.target.value});
@@ -47,6 +64,19 @@ class Place extends React.Component{
     render(){
         return (
             <>
+                {   
+                    <ul className="event__container__single">
+                        {this.state.events.map(item => (
+                            <li key={item.id}> 
+                                <h4>{item.name}</h4>
+                                <span>{new Date(item.date).toLocaleString()}</span>
+                                <span>{item.location.address}</span>
+                                <button>DOŁACZ</button>
+                            </li>
+                        ))}
+                    </ul>
+                }
+
                 {
                     this.state.placeId ?
                         (
@@ -69,12 +99,20 @@ class Place extends React.Component{
                         <input type="text" name="name" placeholder="Nowa zabawa" onChange={this.handleInputs} />
                         </label>
         
+
+                        <div class="divide_half">
                         <label>
                         <span>Data wydarzenia</span>
                         <input type="date" name="date" placeholder="Dzień wydarzenia" onChange={this.handleInputs} />
                         </label>
 
-                        <input type="submit" value="Stworz turniej" />
+                        <label>
+                        <span>Godzina startu</span>
+                        <input type="time" name="hour" placeholder="04:20" onChange={this.handleInputs} />
+                        </label>
+                        </div>
+
+                        <input type="submit" value="Stworz event" />
                     </form>
                 </div>
             </>

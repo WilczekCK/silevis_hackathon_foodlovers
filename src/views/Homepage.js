@@ -1,6 +1,8 @@
 import React from "react";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import calendar_icon from '../assets/icons/icon_calendar_grey.png';
+import team_icon from '../assets/icons/icon_team_grey.png';
 
 
 class Homepage extends React.Component{
@@ -33,8 +35,8 @@ class Homepage extends React.Component{
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
                 <div class="homepage__container__bottomAlign">
-                    <a>Moja druzyna</a>
-                    <a>Najblizsze wydarzenia</a>
+                    <a> <img src={team_icon}/> Moja druzyna</a>
+                    <a> <img src={calendar_icon}/> Najblizsze wydarzenia</a>
 
                     <hr/>
                 </div>

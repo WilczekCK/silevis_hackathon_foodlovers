@@ -42,6 +42,8 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .homepage__container h1{font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500;}
 .homepage__container p{flex-grow:1; color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px; margin-bottom:50px;}
 
+.homepage__container .homepage__container__bottomAlign img{ width:20px; height:15px; margin-right:10px;}
+
 .homepage__container .homepage__container__bottomAlign{display:flex; flex-direction: column-reverse; width:100%; flex-grow:2;}
 .homepage__container .homepage__container__bottomAlign hr{color:var(--hackathon-main); width:100%;}
 .homepage__container .homepage__container__bottomAlign a { color: var(--hackathon-fontPararaphs); font-size:24px; font-family:var(--hackathon-fontHeading); }
@@ -50,3 +52,11 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 
 .login_toolbar{display:flex; flex-direction: row; flex-wrap:wrap; margin-bottom:25px;}
 .login_toolbar button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}
+
+.event__container__single{list-style: none; padding-left:0px; overflow-y:scroll; max-height:45%}
+.event__container__single li{ display:flex; flex-direction: column; background:rgba(0,0,0,.2); padding:20px 15px; padding-bottom:30px; margin-bottom:10px;}
+.event__container__single li h4{margin-top:10px; margin-bottom:15px; font-size:24px}
+.event__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
+
+.divide_half{display:flex; flex-direction: row;}
+.divide_half > label {width:48%; margin-left:1%;}
