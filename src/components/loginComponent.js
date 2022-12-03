@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 import jwt from 'jwt-decode'
 import CookieController from "../controllers/cookieController";
+import password_icon from '../assets/icons/icon_password_black.png';
+import email_icon from '../assets/icons/icon_mail_black.png';
 
 
 class LoginComponent extends React.Component{
@@ -67,11 +69,13 @@ class LoginComponent extends React.Component{
                             <form onSubmit={this.handleSubmit}>
                             <label>
                                 E-Mail:
+                                <img src={email_icon} />
                                 <input type="text" name="email" value={this.state.email} onChange={this.handleInputs} />
                             </label>
                             <br/>
                             <label>
                                 Hasło:
+                                <img src={password_icon} />
                                 <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
                             </label>
                             <br/>

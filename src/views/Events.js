@@ -35,6 +35,8 @@ componentDidMount() {
         return (
             <>
                 { 
+                <div className="places__container">
+                    <h2>Wydarzenia czasowo najblizej</h2>
                     <ul className="events__container__single">
                         {this.state.events.map(item => (
                             <li key={item.id}> 
@@ -44,6 +46,7 @@ componentDidMount() {
                             </li>
                         ))}
                     </ul>
+                </div>
                 }
             </>
         )

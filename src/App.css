@@ -61,12 +61,12 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .event__container__single li h4{margin-top:10px; margin-bottom:15px; font-size:24px}
 .event__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
 
-.events__container__single{list-style: none; padding-left:0px; overflow-y:scroll; height:80%}
+.events__container__single{list-style: none; padding-left:0px; overflow-y:scroll; max-height:80%}
 .events__container__single li{ display:flex; flex-direction: column; background:rgba(0,0,0,.2); padding:20px 15px; padding-bottom:30px; margin-bottom:10px;}
 .events__container__single li h4{margin-top:10px; margin-bottom:15px; font-size:24px}
 .events__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
 
-
+.places__container{overflow-y:scroll; max-height:80% }
 
 .teams__container__list{margin-top:50px; list-style: none; padding-left:0px; overflow-y:scroll; max-height:45%}
 .teams__container__list li{ display:flex; flex-direction: row; justify-content:space-between; align-items: center; background:rgba(0,0,0,.2); padding:10px 10px; margin-bottom:10px;}
@@ -74,7 +74,15 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .teams__container__list li button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:5px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
 .teams__container__list li img{height:15px; margin-right:4px;}
 
-.login__container{margin-top:60px;}
+.login__container{margin-top:60px; }
+.login__container img{ background: white; background-size: auto; width: 23px; height: 20px; background-size: contain; position: absolute; margin-top: 30px; margin-left: 10px;}
+.login__container input[type="text"],
+.login__container input[type="password"]{padding-left:45px;}
+
+.register__container img{ background: white; background-size: auto; width: 23px; height: 20px; background-size: contain; position: absolute; margin-top: 34px; margin-left: 10px;}
+.register__container input[type="text"],
+.register__container input[type="password"],
+.register__container input[type="email"]{padding-left:45px;}
 
 .divide_half{display:flex; flex-direction: row;}
 .divide_half > label {width:48%; margin-left:1%;}

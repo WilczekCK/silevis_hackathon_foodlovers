@@ -23,6 +23,7 @@ class Place extends React.Component{
             time: '',
             events: [],
             cookie: CookieInstation.getCookieInfo(),
+            hidden: true,
         }
 
         this.createNewEvent = this.createNewEvent.bind(this);
@@ -54,7 +55,7 @@ class Place extends React.Component{
 
     componentDidMount() {
         axios.get(`/api/Event/ByLocation/${this.state.placeId}`, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
-            this.setState({events: response.data})
+            this.setState({events: response.data, hidden: false})
         });
     }
     
@@ -66,7 +67,8 @@ class Place extends React.Component{
     addToEvent(e){
         const cookieTranslated = jwt(this.state.cookie);
         const eventId = e.target.attributes['data-event-id'].value;
-        e.target.value = "DOŁACZONO";
+        console.log(e.target);
+        e.target.textContent = "DOŁACZONO";
 
         
         axios.post(`/api/Event/AddTeam/`, {
@@ -78,7 +80,10 @@ class Place extends React.Component{
 
 
     displayProperButton( eventTeamId, cookieTranslated, secondTeam, eventId ){
-        if(parseInt(eventTeamId) === parseInt(cookieTranslated.TeamId)){
+        if(eventTeamId === undefined){
+            return (<button data-event-id={eventId} onClick={this.addToEvent}>DOŁACZ</button> )
+        }
+        else if(parseInt(eventTeamId.id) === parseInt(cookieTranslated.TeamId)){
             return (<button>DOŁACZONO</button>)
         } else if(  secondTeam === undefined  ) {
             return (<button data-event-id={eventId} onClick={this.addToEvent}>DOŁACZ</button> )
@@ -88,22 +93,26 @@ class Place extends React.Component{
     }
 
     render(){
-        const cookieTranslated = jwt(this.state.cookie);
+        const cookieTranslated = this.state.cookie ? jwt(this.state.cookie) : '';
 
         return (
             <>
                 {   
-                    <ul className="event__container__single">
-                        {this.state.events.map(item => (
-                            <li key={item.id}> 
-                                <h4>{item.name}</h4>
-                                <span>{new Date(item.date).toLocaleString()}</span>
-                                <span>{item.location.address}</span>
-                            
-                                { this.displayProperButton(item.teams[0].id, cookieTranslated, item.teams[1], item.id) }
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="places__container">
+                        <h2>Wydarzenia w tej lokalizacji</h2>
+                        <ul className="event__container__single">
+                            {this.state.events.length === 0 ? <h3 className={this.state.hidden ? 'hidden' : ''}>Brak wyników</h3> : ''}
+                            {this.state.events.map(item => (
+                                <li key={item.id}> 
+                                    <h4>{item.name}</h4>
+                                    <span>{new Date(item.date).toLocaleString()}</span>
+                                    <span>{item.location.address}</span>
+                                
+                                    { this.displayProperButton(item.teams[0], cookieTranslated, item.teams[1], item.id) }
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 }
 
                 {
@@ -118,7 +127,7 @@ class Place extends React.Component{
                                 </label>
                 
         
-                                <div class="divide_half">
+                                <div className="divide_half">
                                 <label>
                                 <span>Data wydarzenia</span>
                                 <input type="date" name="date" placeholder="Dzień wydarzenia" onChange={this.handleInputs} />
