@@ -38,7 +38,7 @@ class Map extends React.Component{
                     <Marker key={index} position={event.pos}>
                         <Popup>
                             <h3>{event.name}</h3>
-                            <Link reloadDocument to={`/event/${event.id}`}> PRZEJDŹ DO WYDARZENIA </Link>
+                            <Link reloadDocument to={`/place/${event.id}`}> PRZEJDŹ DO MIEJSCA </Link>
                         </Popup>
                     </Marker>
                 )}
