@@ -2,6 +2,7 @@ import React from "react";
 import CookieInstation from "../controllers/cookieController";
 import axios from "axios";
 import {useParams, Router} from 'react-router-dom';
+import jwt from 'jwt-decode'
 
 export function withRouter(Children){
     return(props)=>{
@@ -20,7 +21,8 @@ class Place extends React.Component{
             name: '',
             date: '',
             time: '',
-            events: []
+            events: [],
+            cookie: CookieInstation.getCookieInfo(),
         }
 
         this.createNewEvent = this.createNewEvent.bind(this);
@@ -31,12 +33,14 @@ class Place extends React.Component{
     createNewEvent(e){
         e.preventDefault();
         const cookie = CookieInstation.getCookieInfo();
+        const cookieTranslated = jwt(cookie);
 
         axios.post('/api/Event', {
             name: this.state.name,
             locationId: this.state.placeId,
             date: this.state.date,
-            time: this.state.time
+            time: this.state.time,
+            teamId: cookieTranslated.TeamId,
         }, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
             response.data.location = this.state.events[0].location; 
 
@@ -47,9 +51,7 @@ class Place extends React.Component{
     }
 
     componentDidMount() {
-        const cookie = CookieInstation.getCookieInfo();
-
-        axios.get(`/api/Event/ByLocation/${this.state.placeId}`, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
+        axios.get(`/api/Event/ByLocation/${this.state.placeId}`, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
             this.setState({events: response.data})
         });
     }
@@ -62,6 +64,9 @@ class Place extends React.Component{
     }
 
     render(){
+        const cookieTranslated = jwt(this.state.cookie);
+        console.log(cookieTranslated);
+
         return (
             <>
                 {   
@@ -77,33 +82,37 @@ class Place extends React.Component{
                     </ul>
                 }
 
-                <div className="events__container">
-                    <h2>Dodaj nowe wydarzenie</h2>
-                </div>
-
-                <div>
-                    <form onSubmit={this.createNewEvent}>
-                        <label>
-                        <span>Nazwa wydarzenia </span>
-                        <input type="text" name="name" placeholder="Nowa zabawa" onChange={this.handleInputs} />
-                        </label>
+                {
+                    parseInt(cookieTranslated.isCaptain) 
+                    ? (
+                        <div>   
+                            <h2>Dodaj nowe wydarzenie</h2>
+                            <form onSubmit={this.createNewEvent}>
+                                <label>
+                                <span>Nazwa wydarzenia </span>
+                                <input type="text" name="name" placeholder="Nowa zabawa" onChange={this.handleInputs} />
+                                </label>
+                
         
-
-                        <div class="divide_half">
-                        <label>
-                        <span>Data wydarzenia</span>
-                        <input type="date" name="date" placeholder="Dzień wydarzenia" onChange={this.handleInputs} />
-                        </label>
-
-                        <label>
-                        <span>Godzina startu</span>
-                        <input type="time" name="time" placeholder="04:20" onChange={this.handleInputs} />
-                        </label>
+                                <div class="divide_half">
+                                <label>
+                                <span>Data wydarzenia</span>
+                                <input type="date" name="date" placeholder="Dzień wydarzenia" onChange={this.handleInputs} />
+                                </label>
+        
+                                <label>
+                                <span>Godzina startu</span>
+                                <input type="time" name="time" placeholder="04:20" onChange={this.handleInputs} />
+                                </label>
+                                </div>
+        
+                                <input type="submit" value="Stworz event" />
+                            </form>
                         </div>
+                    )
+                    : ''
+                }
 
-                        <input type="submit" value="Stworz event" />
-                    </form>
-                </div>
             </>
         )
     }

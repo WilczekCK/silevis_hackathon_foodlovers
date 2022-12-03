@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import axios from "axios";
 import CookieInstation from "../controllers/cookieController";
 import jwt from 'jwt-decode'
+import crown_icon from '../assets/icons/icon_korona.png';
 
 
 class Teams extends React.Component{
@@ -17,7 +18,8 @@ class Teams extends React.Component{
             teamName: '', //only for ppl who are in team!
             capitanId: '', //only for ppl who are in team!
             
-            cookie: CookieInstation.getCookieInfo()
+            cookie: CookieInstation.getCookieInfo(),
+            hideContent: true,
         };
 
         if(this.state.cookie.TeamId !== ''){
@@ -30,11 +32,20 @@ class Teams extends React.Component{
     componentDidMount() {
         const cookieTranslated = jwt(this.state.cookie);
 
-        if(cookieTranslated.TeamId === ''){
-            axios.get(`/api/Team/`, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
-                this.setState({teams: response.data})
-            });
-        }
+        axios.get(`/api/Team/`, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
+            this.setState({teams: response.data})
+
+            response.data.forEach(team => {
+                team.people.forEach(teamMember => {
+                    if( parseInt(teamMember.id) === parseInt(cookieTranslated.Id)){
+                        // XD TEMP
+                        this.setState({TeamId: team.id, teamMembers: team.people, teamName: team.name, capitanId: team.captainId});
+                    }
+                })
+            })
+
+            this.setState({hideContent: false})
+        });
     }
 
     joinTeam(e){
@@ -47,14 +58,13 @@ class Teams extends React.Component{
         }, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
             console.log(response);
 
-            
             this.setState({ TeamId: response.data.id, teamMembers: response.data.people, teamName: response.data.name, capitanId: response.data.captainId })
         });
     }
 
     render(){
         return (
-            <div class="teams__container">
+            <div class="teams__container" className={this.state.hideContent ? 'hidden' : ''}>
                 
                 {this.state.TeamId !== null
                 ? (
@@ -64,8 +74,7 @@ class Teams extends React.Component{
                         <div class="teams__container__list">
                         {this.state.teamMembers.map(item => (
                             <li key={item.id}> 
-
-                                <h4> {this.state.capitanId === item.id ? 'chuj' : ''} {item.firstName} {item.lastName}</h4>
+                                <h4> {this.state.capitanId === item.id ? <img src={crown_icon} /> : ''} {item.firstName} {item.lastName}</h4>
                             </li>
                         ))}
                     </div>

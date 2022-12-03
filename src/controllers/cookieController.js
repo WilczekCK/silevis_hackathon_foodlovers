@@ -25,7 +25,7 @@ class CookieController {
         } else {
             const cookie = token;
 
-            Cookies.set(this.cookieName, cookie, {expires: 7, path: '', sameSite:'none'});
+            Cookies.set(this.cookieName, cookie, {expires: 7, path: '/', sameSite:'none'});
             return true;
         }
         

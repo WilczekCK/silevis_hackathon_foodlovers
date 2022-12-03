@@ -14,7 +14,6 @@ import './App.css';
 import './assets/normalize.css';
 import {createBrowserRouter, RouterProvider, redirect} from 'react-router-dom'
 import axios from "axios";
-import Cookies from 'js-cookie';
 
 axios.defaults.baseURL = 'http://192.168.1.118:5038'
 

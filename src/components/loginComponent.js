@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import jwt from 'jwt-decode'
 import CookieController from "../controllers/cookieController";
-import Cookies from 'js-cookie';
 
 
 class LoginComponent extends React.Component{

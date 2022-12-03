@@ -2,7 +2,6 @@ import React from "react";
 import {useParams} from 'react-router-dom';
 import axios from "axios";
 import CookieInstation from "../controllers/cookieController";
-import jwt from 'jwt-decode'
 
 
 export function withRouter(Children){
