@@ -1,5 +1,4 @@
 import React from "react";
-import LoginToolbarButtons from '../components/LoginToolbarButtons';
 
 class Homepage extends React.Component{
     constructor(props){
@@ -19,11 +18,6 @@ class Homepage extends React.Component{
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
                 <div class="homepage__container__bottomAlign">
-                    <LoginToolbarButtons 
-                        isLoggedIn={this.props.isLoggedIn}
-                        onLogout={this.props.onLogout}
-                    />
-
                     <a>Moja druzyna</a>
                     <a>Najblizsze wydarzenia</a>
 

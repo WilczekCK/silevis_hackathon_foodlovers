@@ -55,9 +55,16 @@ class LoginComponent extends React.Component{
                 </h2>
 
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="username" value={this.state.username} onChange={this.handleInputs} />
-                    <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
-
+                    <label>
+                        Login:
+                        <input type="text" name="username" value={this.state.username} onChange={this.handleInputs} />
+                    </label>
+                    <br/>
+                    <label>
+                        Hasło:
+                        <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
+                    </label>
+                    <br/>
                     <input type="submit" value="Login"/>
                 </form>
             </div>

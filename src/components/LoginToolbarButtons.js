@@ -1,13 +1,21 @@
 import React from "react";
-import CookieInstation from "../controllers/cookieController";
 
 class LoginToolbarButtons extends React.Component{
     constructor(props){
         super(props);
+
+        this.logout = this.logout.bind(this);
+        this.changeMenuLocation = this.changeMenuLocation.bind(this);
     }
 
     logout(){
         this.props.onLogout();
+    }
+
+    changeMenuLocation(e){
+        const menuLocation = e.target.attributes['data-action'].value;
+        console.log(menuLocation)
+        return this.props.onMenuChange(menuLocation);
     }
 
     render(){
@@ -15,12 +23,12 @@ class LoginToolbarButtons extends React.Component{
             <>
             {!this.props.isLoggedIn 
                 ? (
-                    <div class="homepage__container_bottomAlign--horizontal">
-                        <button>Zaloguj sie</button>
-                        <button>Zarejestruj sie</button>
+                    <div className="homepage__container_bottomAlign--horizontal">
+                        <button onClick={this.changeMenuLocation} data-action="login">Zaloguj sie</button>
+                        <button onClick={this.changeMenuLocation} data-action="signup">Zarejestruj sie</button>
                     </div>
                 ) : (
-                    <div class="homepage__container_bottomAlign--horizontal">
+                    <div className="homepage__container_bottomAlign--horizontal">
                         <button onClick={this.logout}>Wyloguj się</button>
                     </div> 
                 )

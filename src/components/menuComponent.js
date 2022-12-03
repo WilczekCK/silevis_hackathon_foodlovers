@@ -1,6 +1,7 @@
 import React from "react";
 import CookieInstation from "../controllers/cookieController";
 import LoginComponent from './loginComponent';
+import LoginToolbarButtons from './LoginToolbarButtons';
 
 import Events from '../views/Events'
 import Homepage from '../views/Homepage'
@@ -46,10 +47,7 @@ class MenuComponent extends React.Component{
             case menuLocation.includes('home'):
                 return (
                 <div className="homepage__container">
-                    <Homepage 
-                        isLoggedIn={(this.props.cookieInfo && this.props.cookieInfo.username)}
-                        onLogout={this.logout}
-                    />
+                    <Homepage />
                 </div>
                 )
             case menuLocation.includes('locations'):
@@ -67,7 +65,7 @@ class MenuComponent extends React.Component{
             case menuLocation.includes('events'):
                 return <Events menuLocationId={menuLocation.replace(/\D/g, "")} />
             case menuLocation.includes('login'):
-                return <Login />
+                return <Login/>
             default:
                 break;
         }
@@ -87,7 +85,7 @@ class MenuComponent extends React.Component{
                             <br />
                             <button onClick={this.logout}>Logout</button>
                         </div>)
-                        :  <LoginComponent onCookieChange={this.props.onCookieChange} />
+                        : ''
                     }
                 
                     <ul>
@@ -100,7 +98,23 @@ class MenuComponent extends React.Component{
                 
                 </div>
             
-                {this.displayProperMenuContent()}
+                {
+                this.displayProperMenuContent()
+                }
+
+                {
+                    this.props.menuLocation !== 'signup' && this.props.menuLocation !== 'login'
+                    ? (
+                        <LoginToolbarButtons 
+                        onMenuChange={this.props.onMenuChange}
+                        isLoggedIn={(this.props.cookieInfo && this.props.cookieInfo.username)}
+                        onLogout={this.logout}
+                        onCookieChange={this.props.onCookieChange}
+                        />
+                    )
+                    : ''
+                }
+
             </>
         )
     }

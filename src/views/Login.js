@@ -1,4 +1,5 @@
 import React from "react";
+import LoginComponent from "../components/loginComponent";
 
 class Events extends React.Component{
     constructor(props){
@@ -9,20 +10,7 @@ class Events extends React.Component{
     render(){
         return (
             <>
-                {
-                    this.props.menuLocationId ?
-                        (
-                            <div className="events__container">
-                                <h2>Event number {this.props.menuLocationId}</h2>
-                            </div>
-                        )
-                    :
-                        (
-                            <div className="events__container">
-                                <h2>Events</h2>
-                            </div>
-                        )
-                }
+                <LoginComponent onCookieChange={this.props.onCookieChange} />
             </>
         )
     }
