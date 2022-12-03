@@ -37,7 +37,8 @@ html, body, #root{height:100%; width:100%; color:white;}
 
 .homepage__container .homepage__container__bottomAlign{display:flex; flex-direction: column-reverse; width:100%; flex-grow:2;}
 .homepage__container .homepage__container__bottomAlign hr{color:var(--hackathon-main); width:100%;}
-.homepage__container .homepage__container__bottomAlign a { color: var(--hackathon-fontPararaphs); font-size:24px; font-family:var(--hackathon-fontHeading) }
+.homepage__container .homepage__container__bottomAlign a { color: var(--hackathon-fontPararaphs); font-size:24px; font-family:var(--hackathon-fontHeading); }
+.homepage__container .homepage__container__bottomAlign a:first-of-type{margin-bottom:25px;}
 .homepage__container .homepage__container__bottomAlign > * { margin:8px 0px; }
 
 .homepage__container .homepage__container__bottomAlign .homepage__container_bottomAlign--horizontal{display:flex; flex-direction: row; flex-wrap:wrap; margin-top:50px; margin-bottom:25px;}

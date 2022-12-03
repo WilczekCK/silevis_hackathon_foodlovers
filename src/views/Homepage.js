@@ -13,10 +13,14 @@ class Homepage extends React.Component{
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
                 <div class="homepage__container__bottomAlign">
-                    <div class="homepage__container_bottomAlign--horizontal">
-                        <button>Zaloguj sie</button>
-                        <button>Zarejestruj sie</button>
-                    </div>
+                    {!this.props.isLoggedIn 
+                        ? (
+                            <div class="homepage__container_bottomAlign--horizontal">
+                                <button>Zaloguj sie</button>
+                                <button>Zarejestruj sie</button>
+                            </div>
+                        )  : '' }
+
 
                     <a>Moja druzyna</a>
                     <a>Najblizsze wydarzenia</a>

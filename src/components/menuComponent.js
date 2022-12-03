@@ -4,6 +4,7 @@ import LoginComponent from './loginComponent';
 
 import Events from '../views/Events'
 import Homepage from '../views/Homepage'
+import Login from '../views/Login'
 
 class MenuComponent extends React.Component{
     constructor(props){
@@ -45,7 +46,7 @@ class MenuComponent extends React.Component{
             case menuLocation.includes('home'):
                 return (
                 <div className="homepage__container">
-                    <Homepage />
+                    <Homepage isLoggedIn={(this.props.cookieInfo && this.props.cookieInfo.username) !== ''}/>
                 </div>
                 )
             case menuLocation.includes('locations'):
@@ -62,6 +63,8 @@ class MenuComponent extends React.Component{
                 )
             case menuLocation.includes('events'):
                 return <Events menuLocationId={menuLocation.replace(/\D/g, "")} />
+            case menuLocation.includes('login'):
+                return <Login />
             default:
                 break;
         }
