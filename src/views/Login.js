@@ -1,7 +1,7 @@
 import React from "react";
 import LoginComponent from "../components/loginComponent";
 
-class Events extends React.Component{
+class Login extends React.Component{
     constructor(props){
         super(props);
     }
@@ -16,6 +16,6 @@ class Events extends React.Component{
     }
 }
 
-export default Events;
+export default Login;
 
 
