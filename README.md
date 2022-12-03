@@ -1,10 +1,8 @@
-# Getting Started with Create React App
+# Silevis Hackathon - FoodLovers Team - 24H
 
-FIGMA:
+We focused to recreate this design made by our graphic designer:
 https://www.figma.com/file/etXFNwxXvzzO8ECTSMfoYV/Untitled?node-id=0%3A1
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
