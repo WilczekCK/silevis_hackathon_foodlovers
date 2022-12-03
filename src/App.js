@@ -118,12 +118,6 @@ class App extends React.Component{
     ])
   }
 
-  
-  setMenuLocation( menuLocation ){
-    console.log(this.router.redirect);
-  
-  }
-
   render(){
     return (
       <div className="App">
@@ -132,28 +126,5 @@ class App extends React.Component{
       )
   }
 }
-
-/*
-
-      <div className="App">
-          <div className="App__map">
-            <Map
-              onMenuChange={this.setMenuLocation}
-            />
-          </div>
-          <div className="App__menu">
-            
-            
-            
-          </div>
-      </div>
-
-<MenuComponent 
-              cookieInfo={this.state.cookieInfo}
-              onCookieChange={this.setCookieInfo}
-              menuLocation={this.state.menuLocation}
-              onMenuChange={this.setMenuLocation}
-            />
-             */
 
 export default App;

@@ -56,8 +56,6 @@ class Teams extends React.Component{
             teamId,
             personId: cookieTranslated.Id
         }, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
-            console.log(response);
-
             this.setState({ TeamId: response.data.id, teamMembers: response.data.people, teamName: response.data.name, capitanId: response.data.captainId })
         });
     }

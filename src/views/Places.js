@@ -61,8 +61,6 @@ class Place extends React.Component{
 
     handleInputs(e){
         this.setState({[e.target.name]: e.target.value});
-
-        console.log(e.target.value);
     }
 
     addToEvent(e){
@@ -75,7 +73,6 @@ class Place extends React.Component{
             teamId: cookieTranslated.TeamId,
             eventId
         }, { headers:{ Authorization: `Bearer ${this.state.cookie}` } }).then((response) => {
-            console.log(response);
         });
     }
 
@@ -92,9 +89,6 @@ class Place extends React.Component{
 
     render(){
         const cookieTranslated = jwt(this.state.cookie);
-        console.log(cookieTranslated);
-
-        
 
         return (
             <>
