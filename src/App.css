@@ -7,6 +7,7 @@ html, body, #root{height:100%; width:100%; color:white;}
   --hackathon-fontContent: 'Karla Regular';
   --hackathon-fontPararaphs: 'Karla Medium';
 }
+a{text-decoration: unset !important;}
 
 @font-face {
   font-family: "Karla Regular";
@@ -41,6 +42,7 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .homepage__container{ display:flex; flex-direction:column; height:90%;}
 .homepage__container h1{font-family: var(--hackathon-fontHeading); font-size:42px; font-weight:500;}
 .homepage__container p{flex-grow:1; color:var(--hackathon-textdark); font-size:20px; letter-spacing: .5px; margin-bottom:50px;}
+.homepage__container > img { height: 75px; width: 75px; position:relative; left:45%; top:8%; }
 
 .homepage__container .homepage__container__bottomAlign img{ width:20px; height:15px; margin-right:10px;}
 
@@ -57,6 +59,12 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .event__container__single li{ display:flex; flex-direction: column; background:rgba(0,0,0,.2); padding:20px 15px; padding-bottom:30px; margin-bottom:10px;}
 .event__container__single li h4{margin-top:10px; margin-bottom:15px; font-size:24px}
 .event__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
+
+.events__container__single{list-style: none; padding-left:0px; overflow-y:scroll; height:80%}
+.events__container__single li{ display:flex; flex-direction: column; background:rgba(0,0,0,.2); padding:20px 15px; padding-bottom:30px; margin-bottom:10px;}
+.events__container__single li h4{margin-top:10px; margin-bottom:15px; font-size:24px}
+.events__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
+
 
 .divide_half{display:flex; flex-direction: row;}
 .divide_half > label {width:48%; margin-left:1%;}

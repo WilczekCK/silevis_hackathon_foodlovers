@@ -76,7 +76,7 @@ class App extends React.Component{
         element: <Map/>
       },
       {
-        path: '/event/:eventId',
+        path: '/events/',
         element: (
           <>
             <div className="App__map">

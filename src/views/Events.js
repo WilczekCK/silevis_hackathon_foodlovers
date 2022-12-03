@@ -1,5 +1,7 @@
 import React from "react";
-import {useParams, Router} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import axios from "axios";
+import CookieInstation from "../controllers/cookieController";
 
 export function withRouter(Children){
     return(props)=>{
@@ -13,27 +15,34 @@ class Events extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            eventId: props.match.params.eventId,
+            events: []
         }
     }
+
+
+componentDidMount() {
+    const cookie = CookieInstation.getCookieInfo();
+
+    axios.get(`/api/Event/`, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
+        this.setState({events: response.data})
+    });
+}
+
 
 
     render(){
         return (
             <>
-                {
-                    this.state.eventId ?
-                        (
-                            <div className="events__container">
-                                <h2>Event number {this.state.eventId}</h2>
-                            </div>
-                        )
-                    :
-                        (
-                            <div className="events__container">
-                                <h2>Events</h2>
-                            </div>
-                        )
+                {   
+                    <ul className="events__container__single">
+                        {this.state.events.map(item => (
+                            <li key={item.id}> 
+                                <h4>{item.name}</h4>
+                                <span>{new Date(item.date).toLocaleString()}</span>
+                                <span>{item.location.address}</span>
+                            </li>
+                        ))}
+                    </ul>
                 }
             </>
         )

@@ -3,6 +3,8 @@ import Cookies from 'js-cookie';
 import axios from "axios";
 import calendar_icon from '../assets/icons/icon_calendar_grey.png';
 import team_icon from '../assets/icons/icon_team_grey.png';
+import ball_logo from '../assets/icons/logo_ball.png';
+import {Link} from 'react-router-dom';
 
 
 class Homepage extends React.Component{
@@ -31,12 +33,13 @@ class Homepage extends React.Component{
     render(){
         return (
             <div className="homepage__container">
+                <img src={ball_logo} />
                 <h1>Witaj<br/> w BookSport!</h1>
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
                 <div class="homepage__container__bottomAlign">
                     <a> <img src={team_icon}/> Moja druzyna</a>
-                    <a> <img src={calendar_icon}/> Najblizsze wydarzenia</a>
+                    <Link to={'/events'}><a> <img src={calendar_icon}/> Najblizsze wydarzenia</a></Link>
 
                     <hr/>
                 </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import CookieInstation from "../controllers/cookieController";
 import axios from "axios";
-
 import {useParams, Router} from 'react-router-dom';
 
 export function withRouter(Children){
@@ -20,7 +19,7 @@ class Place extends React.Component{
             placeId: props.match.params.placeId,
             name: '',
             date: '',
-            hour: '',
+            time: '',
             events: []
         }
 
@@ -36,7 +35,8 @@ class Place extends React.Component{
         axios.post('/api/Event', {
             name: this.state.name,
             locationId: this.state.placeId,
-            date: this.state.date
+            date: this.state.date,
+            time: this.state.time
         }, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
             response.data.location = this.state.events[0].location; 
 
@@ -77,20 +77,9 @@ class Place extends React.Component{
                     </ul>
                 }
 
-                {
-                    this.state.placeId ?
-                        (
-                            <div className="events__container">
-                                <h2>Place number {this.state.placeId}</h2>
-                            </div>
-                        )
-                    :
-                        (
-                            <div className="events__container">
-                                <h2>Places</h2>
-                            </div>
-                        )
-                }
+                <div className="events__container">
+                    <h2>Dodaj nowe wydarzenie</h2>
+                </div>
 
                 <div>
                     <form onSubmit={this.createNewEvent}>
@@ -108,7 +97,7 @@ class Place extends React.Component{
 
                         <label>
                         <span>Godzina startu</span>
-                        <input type="time" name="hour" placeholder="04:20" onChange={this.handleInputs} />
+                        <input type="time" name="time" placeholder="04:20" onChange={this.handleInputs} />
                         </label>
                         </div>
 
