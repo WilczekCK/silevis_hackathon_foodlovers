@@ -63,19 +63,22 @@ class LoginComponent extends React.Component{
                 {
                     !this.state.isValid || this.state.isValid === undefined 
                     ? (
-                        <form onSubmit={this.handleSubmit}>
-                        <label>
-                            E-Mail:
-                            <input type="text" name="email" value={this.state.email} onChange={this.handleInputs} />
-                        </label>
-                        <br/>
-                        <label>
-                            Hasło:
-                            <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
-                        </label>
-                        <br/>
-                        <input type="submit" value="Login"/>
-                    </form>
+                    <>
+                        <h1> Logowanie </h1>
+                            <form onSubmit={this.handleSubmit}>
+                            <label>
+                                E-Mail:
+                                <input type="text" name="email" value={this.state.email} onChange={this.handleInputs} />
+                            </label>
+                            <br/>
+                            <label>
+                                Hasło:
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleInputs}/>
+                            </label>
+                            <br/>
+                            <input type="submit" value="Login"/>
+                        </form>
+                    </>
                     )
                     : 'Cofnij się by kontynuować'
                 }

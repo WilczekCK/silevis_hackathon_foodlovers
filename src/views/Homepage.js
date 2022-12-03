@@ -38,8 +38,8 @@ class Homepage extends React.Component{
                 <p>Wyszukaj miejsce, znajdź lub utwórz druzynę i zagrajcie razem w piłkę nozną</p>
                
                 <div class="homepage__container__bottomAlign">
-                    <a> <img src={team_icon}/> Moja druzyna</a>
-                    <Link to={'/events'}><a> <img src={calendar_icon}/> Najblizsze wydarzenia</a></Link>
+                    <Link to={'/teams'}> <img src={team_icon}/> Moja druzyna</Link>
+                    <Link to={'/events'}> <img src={calendar_icon}/> Najblizsze wydarzenia</Link>
 
                     <hr/>
                 </div>

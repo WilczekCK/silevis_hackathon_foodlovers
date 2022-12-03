@@ -2,12 +2,13 @@ import React from "react";
 import LoginComponent from "../components/loginComponent";
 import CookieController from "../controllers/cookieController";
 import axios from "axios";
+import icon_namesurname from '../assets/icons/icon_nameandsurname_black.png';
 
 
 class Register extends React.Component{
     constructor(props){
         super(props);
-        this.state = { firstName: '', email: '', password: '', lastName: '' }
+        this.state = { firstName: '', email: '', password: '', lastName: '', isRegistered: false }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
@@ -22,6 +23,7 @@ class Register extends React.Component{
             password: this.state.password
         }).then((response) => {
             CookieController.setCookie(response.data);
+            this.setState({isRegistered:true});
         });
     }
 
@@ -31,8 +33,9 @@ class Register extends React.Component{
     
     render(){
         return (
-            <>
+            <div class="register__container">
                 <h1> Rejestracja </h1>
+                {!this.state.isRegistered ?
                 <form onSubmit={this.handleSubmit}>
 
                     <label>
@@ -57,7 +60,8 @@ class Register extends React.Component{
 
                     <input type="submit" value="Zarejestruj sie" />
                 </form>
-            </>
+                : <p>Udało się zarejestrować, cofnij się by kontynuować</p>}
+            </div>
         )
     }
 }

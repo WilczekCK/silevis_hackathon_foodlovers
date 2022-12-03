@@ -2,6 +2,8 @@ import React from "react";
 import {useParams} from 'react-router-dom';
 import axios from "axios";
 import CookieInstation from "../controllers/cookieController";
+import jwt from 'jwt-decode'
+
 
 export function withRouter(Children){
     return(props)=>{
@@ -23,7 +25,7 @@ class Events extends React.Component{
 componentDidMount() {
     const cookie = CookieInstation.getCookieInfo();
 
-    axios.get(`/api/Event/`, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
+    axios.get(`/api/Event/Upcoming`, { headers:{ Authorization: `Bearer ${cookie}` } }).then((response) => {
         this.setState({events: response.data})
     });
 }
@@ -33,7 +35,7 @@ componentDidMount() {
     render(){
         return (
             <>
-                {   
+                { 
                     <ul className="events__container__single">
                         {this.state.events.map(item => (
                             <li key={item.id}> 

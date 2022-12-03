@@ -66,5 +66,14 @@ input[type=submit]{cursor:pointer; background:var(--hackathon-main); color:white
 .events__container__single li button{ margin-top:20px; cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
 
 
+
+.teams__container__list{margin-top:50px; list-style: none; padding-left:0px; overflow-y:scroll; max-height:45%}
+.teams__container__list li{ display:flex; flex-direction: row; justify-content:space-between; align-items: center; background:rgba(0,0,0,.2); padding:10px 10px; margin-bottom:10px;}
+.teams__container__list li h4{margin-top:0px; margin-bottom:0px; margin-left:5px; font-size:20px}
+.teams__container__list li button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:5px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading) }
+
+
+.login__container{margin-top:60px;}
+
 .divide_half{display:flex; flex-direction: row;}
 .divide_half > label {width:48%; margin-left:1%;}

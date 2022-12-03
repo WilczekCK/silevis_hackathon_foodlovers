@@ -8,6 +8,7 @@ import Register from './views/Register';
 import Homepage from './views/Homepage';
 import Events from './views/Events';
 import Place from './views/Places';
+import Teams from './views/Teams';
 import Map from './views/Map'
 import './App.css';
 import './assets/normalize.css';
@@ -74,6 +75,18 @@ class App extends React.Component{
       {
         path: '/map',
         element: <Map/>
+      },
+      {
+        path: '/teams',
+        element: <>
+            <div className="App__map">
+              <Map/>
+            </div>
+            <div className="App__menu">
+              <PreviousPageButton />
+              <Teams/>
+            </div>
+            </>
       },
       {
         path: '/events/',
