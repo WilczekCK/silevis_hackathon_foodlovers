@@ -41,5 +41,5 @@ html, body, #root{height:100%; width:100%; color:white;}
 .homepage__container .homepage__container__bottomAlign a:first-of-type{margin-bottom:25px;}
 .homepage__container .homepage__container__bottomAlign > * { margin:8px 0px; }
 
-.homepage__container_bottomAlign--horizontal{display:flex; flex-direction: row; flex-wrap:wrap; margin-bottom:25px;}
-.homepage__container_bottomAlign--horizontal button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}
+.login_toolbar{display:flex; flex-direction: row; flex-wrap:wrap; margin-bottom:25px;}
+.login_toolbar button{ cursor:pointer; background:var(--hackathon-main); color:white; border:unset; margin-right:25px; width:120px; padding:10px 0px; font-family:var(--hackathon-fontHeading)}

@@ -23,12 +23,12 @@ class LoginToolbarButtons extends React.Component{
             <>
             {!this.props.isLoggedIn 
                 ? (
-                    <div className="homepage__container_bottomAlign--horizontal">
+                    <div className="login_toolbar">
                         <button onClick={this.changeMenuLocation} data-action="login">Zaloguj sie</button>
                         <button onClick={this.changeMenuLocation} data-action="signup">Zarejestruj sie</button>
                     </div>
                 ) : (
-                    <div className="homepage__container_bottomAlign--horizontal">
+                    <div className="login_toolbar">
                         <button onClick={this.logout}>Wyloguj się</button>
                     </div> 
                 )
