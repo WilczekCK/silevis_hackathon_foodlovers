@@ -9,7 +9,7 @@ Task:<br/>
 
 
 ## Summary
-The code is not that clean, I know that and I'm not fully proud of it.<br>I did not want to refine it after the hackathon ended - just to show results after alone writing the frontend with that amount of time. <br/>
+The code is not that clean and SOLID, I know... and I'm not fully proud of it.<br>I did not want to refine it after the hackathon ended - just to show results after alone writing the frontend with that amount of time. <br/>
 Menotors and team buddies gave me a lot of support while creating it.<br/>
 
 You can pull FE and BE depos and use the code as it is, **the code is stable and finished.**<br/>
@@ -44,9 +44,7 @@ It was a pleasure to work with you, all of you 🙌<br/>
 Paweł Wilk (github: [@WilczekCK](github.com/wilczekck))<br/><br/>
  - **Backend** (repo: [/SilevisHackathon.Back](https://github.com/Zimeek/SilevisHackathon.Back))<br/>
  Michał Szymczyk  (github: [@Zimeek](github.com/Zimeek))<br/>
-Adam Sieczka  (github: [@Morfeuszz](github.com/Morfeuszz))<br/>
-
-
+Adam Sieczka  (github: [@Morfeuszz](github.com/Morfeuszz))<br/><br/>
 
 
 
